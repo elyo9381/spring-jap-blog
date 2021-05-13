@@ -1,5 +1,7 @@
 package com.cos.blog.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -29,15 +31,16 @@ public class Board {
     @Lob
     private String content;
 
-    @ColumnDefault("0")
     private int count;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userId")
     private User user;
 
+
     @OneToMany(mappedBy = "board")
-    private List<Reply> reply;
+    @JsonIgnoreProperties({"board"})
+    private List<Reply> replys;
 
     @CreationTimestamp
     private Timestamp creatDate;
