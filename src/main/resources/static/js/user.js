@@ -31,7 +31,7 @@ let index = {
             dataType:"json" // 요청을 서버로 해서 응답이 왔을때 기본적으로 모든것이 문자열 (생긴게 json이라면) -> javascript
         }).done(function (resp){
             if(resp.status === 500){
-                alert("회원가입이 실 되었습니다. ");
+                alert("회원가입이 실패 되었습니다. ");
             } else {
                 alert("회원가입이 완료 되었습니다. ");
                 location.href="/";
